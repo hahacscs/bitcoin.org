@@ -21,8 +21,7 @@ author: |
 This is a new major version release, including new features, various bugfixes
 and performance improvements, as well as updated translations.
 
-Please report bugs using the [issue tracker on
-GitHub](https://github.com/bitcoin/bitcoin/issues).
+Please report bugs using the [issue tracker on GitHub](https://github.com/bitcoin/bitcoin/issues).
 
 [Subscribe here](https://bitcoincore.org/en/list/announcements/join/) to receive
 security and update notifications.
@@ -38,8 +37,7 @@ No attempt is made to prevent installing or running the software on Windows XP,
 you
 can still do so at your own risk but be aware that there are known instabilities
 and issues.
-Please do not report issues about Windows XP to the [issue
-tracker](https://github.com/bitcoin/bitcoin/issues).
+Please do not report issues about Windows XP to the [issue tracker](https://github.com/bitcoin/bitcoin/issues).
 
 Bitcoin Core should also work on most other Unix-like systems but is not
 frequently tested on them.
@@ -151,21 +149,21 @@ unhidden by clicking on the progress bar at the bottom of the window.
 ### Support for JSON-RPC Named Arguments
 
 Commands sent over the JSON-RPC interface and through the `bitcoin-cli` binary
-can now use named arguments. This follows the [JSON-RPC
-specification](http://www.jsonrpc.org/specification)
+can now use named arguments. This follows the [JSON-RPC specification](http://www.jsonrpc.org/specification)
 for passing parameters by-name with an object.
 
 `bitcoin-cli` has been updated to support this by parsing `name=value` arguments
 when the `-named` option is given.
 
 Some examples:
-
+```
     src/bitcoin-cli -named help command="help"
     src/bitcoin-cli -named getblockhash height=0
     src/bitcoin-cli -named getblock
 blockhash=000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
     src/bitcoin-cli -named sendtoaddress address="(snip)" amount="1.0"
 subtractfeefromamount=true
+```
 
 The order of arguments doesn't matter in this case. Named arguments are also
 useful to leave out arguments that should stay at their default value. The
@@ -188,32 +186,26 @@ currently `false`, so transactions will not opt into RBF by default. The new
 The debug console maintains a history of previously entered commands that can be
 accessed by pressing the Up-arrow key so that users can easily reuse previously
 entered commands. Commands which have sensitive information such as passphrases
-and
-private keys will now have a `(...)` in place of the parameters when accessed
-through
-the history.
+and private keys will now have a `(...)` in place of the parameters when
+accessed through the history.
 
 ### Retaining the Mempool Across Restarts
 
-The mempool will be saved to the data directory prior to shutdown
-to a `mempool.dat` file. This file preserves the mempool so that when the node
+The mempool will be saved to the data directory prior to shutdown to a
+`mempool.dat` file. This file preserves the mempool so that when the node
 restarts the mempool can be filled with transactions without waiting for new
-transactions
-to be created. This will also preserve any changes made to a transaction through
-commands such as `prioritisetransaction` so that those changes will not be lost.
+transactions to be created. This will also preserve any changes made to a
+transaction through commands such as `prioritisetransaction` so that those
+changes will not be lost.
 
 ### Final Alert
 
-The Alert System was [disabled and
-deprecated](https://bitcoin.org/en/alert/2016-11-01-alert-retirement) in Bitcoin
-Core 0.12.1 and removed in 0.13.0. 
-The Alert System was retired with a maximum sequence final alert which causes
-any nodes
-supporting the Alert System to display a static hard-coded "Alert Key
-Compromised" message which also
+The Alert System was [disabled and deprecated](https://bitcoin.org/en/alert/2016-11-01-alert-retirement)
+in Bitcoin Core 0.12.1 and removed in 0.13.0. The Alert System was retired with
+a maximum sequence final alert which causes any nodes supporting the Alert
+System to display a static hard-coded "Alert Key Compromised" message which also
 prevents any other alerts from overriding it. This final alert is hard-coded
-into this release
-so that all old nodes receive the final alert.
+into this release so that all old nodes receive the final alert.
 
 ### GUI Changes
 
@@ -253,8 +245,7 @@ so that all old nodes receive the final alert.
  - A new RPC command `getmemoryinfo` has been added which will return
    information
    about the memory usage of Bitcoin Core. This was added in conjunction with
-   optimizations to memory management. See [Pull
-#8753](https://github.com/bitcoin/bitcoin/pull/8753)
+   optimizations to memory management. See [Pull #8753](https://github.com/bitcoin/bitcoin/pull/8753)
    for more information.
  - A new RPC command `bumpfee` has been added which allows replacing an
    unconfirmed wallet transaction that signaled RBF (see the `-walletrbf`
@@ -381,6 +372,7 @@ in locating the code changes and accompanying discussion, both the pull request
 and git merge commit are mentioned.
 
 ### RPC and other APIs
+
 - #8421 `b77bb95` httpserver: drop boost dependency (theuni)
 - #8638 `f061415` rest.cpp: change `HTTP_INTERNAL_SERVER_ERROR` to
   `HTTP_BAD_REQUEST` (djpnewton)
@@ -424,6 +416,7 @@ and git merge commit are mentioned.
   successful (ryanofsky)
 
 ### Block and transaction handling
+
 - #8391 `37d83bb` Consensus: Remove ISM (NicolasDorier)
 - #8365 `618c9dd` Treat high-sigop transactions as larger rather than rejecting
   them (sipa)
@@ -476,6 +469,7 @@ and git merge commit are mentioned.
 - #9813 `3972a8e` Read/write mempool.dat as a binary (paveljanik)
 
 ### P2P protocol and network code
+
 - #8128 `1030fa7` Turn net structures into dumb storage classes (theuni)
 - #8282 `026c6ed` Feeler connections to increase online addrs in the tried table
   (EthanHeilman)
@@ -549,6 +543,7 @@ and git merge commit are mentioned.
 - #9289 `d9ae1ce` net: drop boost::thread\_group (theuni)
 
 ### Validation
+
 - #9014 `d04aeba` Fix block-connection performance regression (TheBlueMatt)
 - #9299 `d52ce89` Remove no longer needed check for premature v2 txs (morcos)
 - #9273 `b68685a` Remove unused `CDiskBlockPos*` argument from ProcessNewBlock
@@ -566,6 +561,7 @@ and git merge commit are mentioned.
 - #9791 `1825a03` Avoid VLA in hash.h (sipa)
 
 ### Build system
+
 - #8238 `6caf3ee` ZeroMQ 4.1.5 && ZMQ on Windows (fanquake)
 - #8520 `b40e19c` Remove check for `openssl/ec.h` (laanwj)
 - #8617 `de07fdc` Include instructions to extract Mac OS X SDK on Linux using
@@ -612,6 +608,7 @@ and git merge commit are mentioned.
 - #9831 `99fd85c` build: force a c++ standard to be specified (theuni)
 
 ### GUI
+
 - #8192 `c503863` Remove URLs from About dialog translations (fanquake)
 - #8540 `36404ae` Fix random segfault when closing "Choose data directory"
   dialog (laanwj)
@@ -670,6 +667,7 @@ and git merge commit are mentioned.
   (jonasschnelli)
 
 ### Wallet
+
 - #8152 `b9c1cd8` Remove `CWalletDB*` parameter from CWallet::AddToWallet
   (pstratem)
 - #8432 `c7e05b3` Make CWallet::fFileBacked private (pstratem)
@@ -725,6 +723,7 @@ and git merge commit are mentioned.
 - #9760 `40c754c` Remove importmulti always-true check (ryanofsky)
 
 ### Tests and QA
+
 - #8270 `6e5e5ab` Tests: Use portable #! in python scripts (/usr/bin/env)
   (ChoHag)
 - #8534,#8504 Remove java comparison tool (laanwj,MarcoFalke)
@@ -798,6 +797,7 @@ and git merge commit are mentioned.
   (ryanofsky)
 
 ### Documentation
+
 - #8332 `806b9e7` Clarify witness branches in transaction.h serialization
   (dcousens)
 - #8935 `0306978` Documentation: Building on Windows with WSL (pooleja)
@@ -848,6 +848,7 @@ and git merge commit are mentioned.
 - #9865 `289204f` Change bitcoin address in RPC help message (marijnfs)
 
 ### Miscellaneous
+
 - #8274 `7a2d402` util: Update tinyformat (laanwj)
 - #8291 `5cac8b1` util: CopyrightHolders: Check for untranslated substitution
   (MarcoFalke)
